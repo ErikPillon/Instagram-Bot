@@ -2,17 +2,18 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time #essentially only for the sleep() feature
 import os
+import getpass
 # the following is deprecated and not needed
 # from selenium.webdriver.common.by import By 
 
-if (os.path.isfile('Username-data/data.txt')):
+if (os.path.isfile('Username-data/data2.txt')):
     f = open('Username-data/data.txt', "r")
     username = f.readline()
     password = f.readline()
 else:
-    print("Sayonara")
-    exit()
-
+    username = input("Please insert your username:")
+    print("Please insert your password:")
+    password = getpass.getpass()
 
 driver = webdriver.Firefox()
 driver.implicitly_wait(1)
