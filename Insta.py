@@ -66,12 +66,14 @@ class Insta_bot:
         print(hashtag + " photo:"+str(len(pic_hrefs))) 
         #for seeing how many photos are there 
         # and now come the loop for visiting the page of the photos
-        for pic_href in pic_hrefs:
-            driver.get(pic_href)
-            time.sleep(5) # pause 5 sec after login in istagram
-            Heart= driver.find_element_by_css_selector('.coreSpriteHeartOpen')
-            Heart.click()     
-        
+        click_number = 0
+        while click_number < 50:
+            for pic_href in pic_hrefs:
+                driver.get(pic_href)
+                time.sleep(5) # pause 5 sec after login in istagram
+                Heart= driver.find_element_by_css_selector('.coreSpriteHeartOpen')
+                Heart.click()     
+                click_number +=1
 def main():
     Phi_Erik = Insta_bot()
     Phi_Erik.import_user_and_password()
