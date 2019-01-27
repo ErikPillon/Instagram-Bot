@@ -13,7 +13,7 @@ class Insta_bot:
     
     # emergency stop
     def shutDown(self): 
-        self.drive.close()
+        self.driver.close()
     
     # get credentials    
     def import_user_and_password(self):
@@ -59,7 +59,19 @@ class Insta_bot:
         for i in range(1,3):
             driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
             time.sleep(1)
-
+        
+        link_to_exploit = driver.find_elements_by_tag_name('a')
+        pic_hrefs = [elem.get_attribute('href') for elem in link_to_exploit]
+        
+        print(hashtag + " photo:"+str(len(pic_hrefs))) 
+        #for seeing how many photos are there 
+        # and now come the loop for visiting the page of the photos
+        for pic_href in pic_hrefs:
+            driver.get(pic_href)
+            time.sleep(5) # pause 5 sec after login in istagram
+            Heart= driver.find_element_by_css_selector('.coreSpriteHeartOpen')
+            Heart.click()     
+        
 def main():
     Phi_Erik = Insta_bot()
     Phi_Erik.import_user_and_password()
