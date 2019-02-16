@@ -49,10 +49,6 @@ class Insta_bot:
 
     def like_photo(self, hashtag):
         driver = self.driver
-        Search_bar = driver.find_element_by_xpath("//input[@placeholder='Search']");
-        #Search_bar.send_keys(hashtag)
-        #time.sleep(1)
-        #Search_bar.send_keys(Keys.RETURN)
         driver.get("https://www.instagram.com/explore/tags/" + hashtag + "/")
         
         time.sleep(3)
@@ -74,12 +70,27 @@ class Insta_bot:
                 Heart= driver.find_element_by_css_selector('.coreSpriteHeartOpen')
                 Heart.click()     
                 click_number +=1
+
+    def collect_photo_to_like(self, hashtag):
+	driver = self.driver
+        driver.get("https://www.instagram.com/explore/tags/" + hashtag + "/")
+        for i in range(1,3):
+            driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+            time.sleep(1)
+        # now I only collect the link for the images
+        link_to_exploit = driver.find_elements_by_tag_name('a')
+        pic_hrefs = [elem.get_attribute('href') for elem in link_to_exploit]
+        f = open('Username-data/to_like.txt', "a+")
+        for href in pic_hrefs:
+            if not href in f:
+                f.write(href+'\n')
+
 def main():
     Phi_Erik = Insta_bot()
     Phi_Erik.import_user_and_password()
     Phi_Erik.login()
-    Phi_Erik.not_now()
-    Phi_Erik.like_photo('F1')
+#    Phi_Erik.not_now()
+    Phi_Erik.collect_photo_to_like('F1')
     
 if __name__ == "__main__":
     main()

@@ -10,7 +10,7 @@ git clone git@github.com:ErikPillon/Instagram-Bot.git
 ```
 on your terminal. Then 
 ```
-python insta-bot.py
+python Insta.py
 ```
 
 ### Outline Progress
@@ -18,13 +18,17 @@ The following developments are foreseen:
 
 - [x] Create the Github Repository
 - [x] Connect The Bot to Instagram
-- [ ] Automatic Search of Hashtag from the Homepage
-- [ ] Automatic Like to post randomly chosen
+- [x] Automatic Search of Hashtag from the Homepage
+- [x] Automatic Like to post ~~randomly~~ sequentially chosen
 - [ ] Automatic Follow to people
 - [ ] Automatic Follow/Unfollow with a given time lag
 - [ ] Search of post by location
 - [ ] Developing of a strategy for targetied users   
 - [ ] Automatic comments on posts   
 - [ ] Fix the number of maximum likes and follow per day
-
+- [ ] Add the version of the project
+- [ ] Add a License to the project
+- [ ] Add specifics to the project: written in..., 
+- [ ] Table of Contents
+- [ ] Installation guide for different OS
 
